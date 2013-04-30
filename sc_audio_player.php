@@ -2,7 +2,7 @@
 /*
 Plugin Name: Compact Audio Player
 Description: Plays a specified audio file (.mp3 or .ogg) using a simple and compact audio player. The audio player is compatible with all major browsers and devices (Android, iPhone).
-Version: 1.3
+Version: 1.4
 Author: Tips and Tricks HQ
 Author URI: http://www.tipsandtricks-hq.com/
 License: GPL2  
@@ -28,9 +28,10 @@ function scap_footer_code(){
 	<script type="text/javascript">
     soundManager.useFlashBlock = true; // optional - if used, required flashblock.css
     soundManager.url = '<?php echo SC_AUDIO_BASE_URL; ?>swf/soundmanager2.swf';
-    function play_mp3(flg,ids,mp3url){
+    function play_mp3(flg,ids,mp3url,volume){
       soundManager.createSound({
         id:'btnplay_'+ids,
+        volume: volume,
         url: mp3url
       });
 	
@@ -68,17 +69,19 @@ function sc_embed_player_handler($atts, $content = null)
 	extract(shortcode_atts(array(
 		'fileurl' => '',
 		'autoplay' => '',
+		'volume' => '',
 		'class' => '',
 	), $atts));	
 	if(empty($fileurl)){
 		return '<div style="color:red;font-weight:bold;">Compact Audio Player Error! You must enter the mp3 file URL via the "fileurl" parameter in this shortcode. Please check the documentation and correct the mistake.</div>';
 	}
+	if(empty($volume)){$volume = '80';}
 	if(empty($class)){$class = "sc_player_container1";}//Set default container class
 	$ids = uniqid();
 	
 	$player_cont = '<div class="'.$class.'">';
-	$player_cont .= '<input type="button" id="btnplay_'.$ids.'" class="myButton_play" onClick="play_mp3(\'play\',\''.$ids.'\',\''.$fileurl.'\');show_hide(\'play\',\''.$ids.'\');" />';
-	$player_cont .= '<input type="button"  id="btnstop_'.$ids.'" style="display:none" class="myButton_stop" onClick="play_mp3(\'stop\',\''.$ids.'\',\'\');show_hide(\'stop\',\''.$ids.'\');" />';
+	$player_cont .= '<input type="button" id="btnplay_'.$ids.'" class="myButton_play" onClick="play_mp3(\'play\',\''.$ids.'\',\''.$fileurl.'\',\''.$volume.'\');show_hide(\'play\',\''.$ids.'\');" />';
+	$player_cont .= '<input type="button"  id="btnstop_'.$ids.'" style="display:none" class="myButton_stop" onClick="play_mp3(\'stop\',\''.$ids.'\',\'\',\''.$volume.'\');show_hide(\'stop\',\''.$ids.'\');" />';
  	$player_cont .= '<div id="sm2-container"><!-- flash movie ends up here --></div>';
  	$player_cont .= '</div>';
 
@@ -91,6 +94,7 @@ soundManager.setup({
 	onready: function() {
 		var mySound = soundManager.createSound({
 		id: 'btnplay_$ids',
+		volume: '$volume',
 		url: '$fileurl'
 		});
 		mySound.play();

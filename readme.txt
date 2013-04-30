@@ -1,10 +1,10 @@
 === Compact WP Audio Player ===
 Contributors: Tips and Tricks HQ
 Donate link: http://www.tipsandtricks-hq.com/development-center
-Tags: audio, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound
+Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 
 A Compact WP Audio Player Pluign that is compatible with all major browsers and devices (Android, iPhone)
@@ -53,6 +53,7 @@ None
 None
 
 == Changelog ==
+1.4 - added a volume parameter option in the shortcode so you can specify the volume of the audio
 1.3 - Added the autoplay option in the shortcode.
 1.2 - added the ability to spcify a container class via the shortcode (helpful for CSS customization)
 1.1 - minor javascript bug fix
