@@ -2,12 +2,13 @@
 /*
 Plugin Name: Compact Audio Player
 Description: Plays a specified audio file (.mp3 or .ogg) using a simple and compact audio player. The audio player is compatible with all major browsers and devices (Android, iPhone).
-Version: 1.4
+Version: 1.5
 Author: Tips and Tricks HQ
 Author URI: http://www.tipsandtricks-hq.com/
 License: GPL2  
 */
 
+define('SC_AUDIO_PLUGIN_VERSION', '1.5');
 define('SC_AUDIO_BASE_URL', plugins_url('/',__FILE__));
 
 add_action('init', 'wp_sc_audio_init');
@@ -24,25 +25,32 @@ function wp_sc_audio_init()
 }
 
 function scap_footer_code(){
+	$debug_marker = "<!-- WP Audio player plugin v" . SC_AUDIO_PLUGIN_VERSION . " - http://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556/ -->";
+	echo "\n${debug_marker}\n";
 	?>
 	<script type="text/javascript">
     soundManager.useFlashBlock = true; // optional - if used, required flashblock.css
     soundManager.url = '<?php echo SC_AUDIO_BASE_URL; ?>swf/soundmanager2.swf';
-    function play_mp3(flg,ids,mp3url,volume){
+    function play_mp3(flg,ids,mp3url,volume,loops){
       soundManager.createSound({
         id:'btnplay_'+ids,
         volume: volume,
         url: mp3url
       });
-	
+
       if(flg == 'play'){
 		//soundManager.stopAll();        
 		soundManager.play('btnplay_'+ids,{
-			  	onfinish: function() {
-			  	document.getElementById('btnplay_'+ids).style.display = 'inline';
-          document.getElementById('btnstop_'+ids).style.display = 'none';
-			  	}
-			  });
+			onfinish: function() {
+				if(loops == 'true'){
+					loopSound('btnplay_'+ids);
+				}
+				else{
+					document.getElementById('btnplay_'+ids).style.display = 'inline';
+					document.getElementById('btnstop_'+ids).style.display = 'none';
+				}
+			}
+		});
       }
       else if(flg == 'stop'){
         //soundManager.stop('btnplay_'+ids);
@@ -59,6 +67,11 @@ function scap_footer_code(){
         document.getElementById('btnstop_'+ids).style.display = 'none';
       }
     }
+    function loopSound(soundID) {
+    	window.setTimeout(function() {
+    		soundManager.play(soundID,{onfinish:function(){loopSound(soundID);}});
+    	},1);
+    }
 	</script>
 	<?php
 }
@@ -71,17 +84,19 @@ function sc_embed_player_handler($atts, $content = null)
 		'autoplay' => '',
 		'volume' => '',
 		'class' => '',
+		'loops' => '',
 	), $atts));	
 	if(empty($fileurl)){
 		return '<div style="color:red;font-weight:bold;">Compact Audio Player Error! You must enter the mp3 file URL via the "fileurl" parameter in this shortcode. Please check the documentation and correct the mistake.</div>';
 	}
 	if(empty($volume)){$volume = '80';}
 	if(empty($class)){$class = "sc_player_container1";}//Set default container class
+	if(empty($loops)){$loops = "false";}
 	$ids = uniqid();
-	
+
 	$player_cont = '<div class="'.$class.'">';
-	$player_cont .= '<input type="button" id="btnplay_'.$ids.'" class="myButton_play" onClick="play_mp3(\'play\',\''.$ids.'\',\''.$fileurl.'\',\''.$volume.'\');show_hide(\'play\',\''.$ids.'\');" />';
-	$player_cont .= '<input type="button"  id="btnstop_'.$ids.'" style="display:none" class="myButton_stop" onClick="play_mp3(\'stop\',\''.$ids.'\',\'\',\''.$volume.'\');show_hide(\'stop\',\''.$ids.'\');" />';
+	$player_cont .= '<input type="button" id="btnplay_'.$ids.'" class="myButton_play" onClick="play_mp3(\'play\',\''.$ids.'\',\''.$fileurl.'\',\''.$volume.'\',\''.$loops.'\');show_hide(\'play\',\''.$ids.'\');" />';
+	$player_cont .= '<input type="button"  id="btnstop_'.$ids.'" style="display:none" class="myButton_stop" onClick="play_mp3(\'stop\',\''.$ids.'\',\'\',\''.$volume.'\',\''.$loops.'\');show_hide(\'stop\',\''.$ids.'\');" />';
  	$player_cont .= '<div id="sm2-container"><!-- flash movie ends up here --></div>';
  	$player_cont .= '</div>';
 
@@ -97,7 +112,18 @@ soundManager.setup({
 		volume: '$volume',
 		url: '$fileurl'
 		});
-		mySound.play();
+		var auto_loop = '$loops';
+		mySound.play({
+    		onfinish: function() {
+				if(auto_loop == 'true'){
+					loopSound('btnplay_$ids');
+				}
+				else{
+					document.getElementById('btnplay_$ids').style.display = 'inline';
+					document.getElementById('btnplay_$ids').style.display = 'none';
+				}
+    		}
+		});
 		document.getElementById('btnplay_$ids').style.display = 'none';
         document.getElementById('btnstop_$ids').style.display = 'inline';
 	},
@@ -135,4 +161,3 @@ function scap_mp3_options()
 	echo '<p><code>[sc_embed_player fileurl="http://www.example.com/wp-content/uploads/my-music/mysong.mp3"]</code></p>';
 	echo '</div>';
 }
-?>
