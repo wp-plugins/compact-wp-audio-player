@@ -3,11 +3,11 @@ Contributors: Tips and Tricks HQ
 Donate link: http://www.tipsandtricks-hq.com/development-center
 Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 1.5
+Tested up to: 3.6.1
+Stable tag: 1.6
 License: GPLv2 or later
 
-A Compact WP Audio Player Pluign that is compatible with all major browsers and devices (Android, iPhone)
+A Compact WP Audio Player Pluign that is compatible with all major browsers and devices (Android, iPhone, iPad)
 
 == Description ==
 
@@ -53,6 +53,8 @@ None
 None
 
 == Changelog ==
+
+1.6 - Added an option to disable simultaneous playback. It will automatically stop the audio file that is currently playing when a user plays a new file. 
 
 1.5 - added a auto loop parameter option in the shortcode to automatically loop the audio file
 
