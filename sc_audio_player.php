@@ -2,13 +2,13 @@
 /*
 Plugin Name: Compact Audio Player
 Description: Plays a specified audio file (.mp3 or .ogg) using a simple and compact audio player. The audio player is compatible with all major browsers and devices (Android, iPhone).
-Version: 1.6
+Version: 1.7
 Author: Tips and Tricks HQ
 Author URI: http://www.tipsandtricks-hq.com/
 License: GPL2  
 */
 
-define('SC_AUDIO_PLUGIN_VERSION', '1.6');
+define('SC_AUDIO_PLUGIN_VERSION', '1.7');
 define('SC_AUDIO_BASE_URL', plugins_url('/',__FILE__));
 
 add_action('init', 'wp_sc_audio_init');
