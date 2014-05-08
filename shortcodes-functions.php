@@ -92,7 +92,7 @@ function sc_embed_player_templater1_handler($atts){
     }
     
     if (empty($autoplay)) {//Set autoplay value
-        $autoplay = "off";
+        $autoplay = "";
     }else{
         $autoplay = "on";
     }
@@ -109,7 +109,7 @@ function sc_embed_player_templater1_handler($atts){
         'autoplay' => $autoplay,
         'preload'  => 'none'
     );
-  
+
     $player_container = "";
     $player_container .= '<div class="'.$class.'">';    
     $player_container .= wp_audio_shortcode($args);

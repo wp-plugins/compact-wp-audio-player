@@ -4,7 +4,7 @@ Donate link: http://www.tipsandtricks-hq.com/development-center
 Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound, ogg, wav,
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 1.9
+Stable tag: 1.9.1
 License: GPLv2 or later
 
 A Compact WP Audio Player Pluign that is compatible with all major browsers and devices (Android, iPhone, iPad)
@@ -57,6 +57,9 @@ None
 None
 
 == Changelog ==
+
+1.9.1 - Fixed a minor bug in the new player template1 with the "autoplay" parameter.
+
 1.9 - Added a new shortcode for a different audio player with seek bar and volume control in the player. The documentation has usage details of this new shortcode.
 
 1.8 - Added the option to specify both an .mp3 and .ogg version of the audio file in the shortocode.
