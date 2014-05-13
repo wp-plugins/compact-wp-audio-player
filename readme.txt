@@ -3,8 +3,8 @@ Contributors: Tips and Tricks HQ
 Donate link: http://www.tipsandtricks-hq.com/development-center
 Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound, ogg, wav,
 Requires at least: 3.0
-Tested up to: 3.9
-Stable tag: 1.9.1
+Tested up to: 3.9.1
+Stable tag: 1.9.2
 License: GPLv2 or later
 
 A Compact WP Audio Player Pluign that is compatible with all major browsers and devices (Android, iPhone, iPad)
@@ -51,12 +51,22 @@ Visit the following page for screenshots
 http://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556
 
 == Frequently Asked Questions ==
-None
+
+= Will my audio file work in all major browsers? =
+Yes
+
+= Can I loop the audio files embedded using this plugin? =
+Yes
+
+= Will the audio player work on iOS devices?
+Yes
 
 == Upgrade Notice ==
 None
 
 == Changelog ==
+
+1.9.2 - Fixed a minor bug (new player template1) with the "loops" parameter.
 
 1.9.1 - Fixed a minor bug in the new player template1 with the "autoplay" parameter.
 

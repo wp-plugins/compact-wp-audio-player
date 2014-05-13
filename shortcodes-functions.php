@@ -98,7 +98,7 @@ function sc_embed_player_templater1_handler($atts){
     }
     
     if (empty($loops)) {//Set the loops value
-        $loops = "off";
+        $loops = "";
     }else{
         $loops = "on";
     }
