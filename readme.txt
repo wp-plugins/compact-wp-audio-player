@@ -1,10 +1,10 @@
 === Compact WP Audio Player ===
 Contributors: Tips and Tricks HQ
-Donate link: http://www.tipsandtricks-hq.com/development-center
+Donate link: https://www.tipsandtricks-hq.com/development-center
 Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound, ogg, wav,
 Requires at least: 3.0
-Tested up to: 3.9.1
-Stable tag: 1.9.2
+Tested up to: 3.9.2
+Stable tag: 1.9.3
 License: GPLv2 or later
 
 A Compact WP Audio Player Pluign that is compatible with all major browsers and devices (Android, iPhone, iPad)
@@ -26,9 +26,9 @@ This audio player plugin Supports .mp3 and .ogg file formats.
 * Use autoplay option to play an audio/mp3 file as soon as the page loads
 * Ability to specify both the mp3 and ogg version of your audio files. The plugin will play the appropriate one based on the device. 
 
-http://www.youtube.com/watch?v=4eBIPqfZiss
+https://www.youtube.com/watch?v=4eBIPqfZiss
 
-More details can be found on the [Compact Audio Player Plugin Page](http://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556)
+More details can be found on the [Compact Audio Player Plugin Page](https://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556)
 
 == Installation ==
 
@@ -48,7 +48,7 @@ Example shortcode:
 
 == Screenshots ==
 Visit the following page for screenshots
-http://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556
+https://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556
 
 == Frequently Asked Questions ==
 
@@ -66,9 +66,16 @@ None
 
 == Changelog ==
 
-1.9.2 - Fixed a minor bug (new player template1) with the "loops" parameter.
+= 1.9.3 =
+- Corrected a typo in the play button image file name.
+- changed the uniqid() function to use the "more_entropy" parameter so the value is more unique.
+- Fixed a minor bug with internet explorer.
 
-1.9.1 - Fixed a minor bug in the new player template1 with the "autoplay" parameter.
+= 1.9.2 =
+- Fixed a minor bug (new player template1) with the "loops" parameter.
+
+= 1.9.1 =
+- Fixed a minor bug in the new player template1 with the "autoplay" parameter.
 
 1.9 - Added a new shortcode for a different audio player with seek bar and volume control in the player. The documentation has usage details of this new shortcode.
 

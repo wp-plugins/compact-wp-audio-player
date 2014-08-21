@@ -28,7 +28,7 @@ function sc_embed_player_handler($atts, $content = null) {
     if (empty($loops)) {
         $loops = "false";
     }
-    $ids = uniqid();
+    $ids = uniqid('', true);//uniqid();
 
     $player_cont = '<div class="' . $class . '">';
     $player_cont .= '<input type="button" id="btnplay_' . $ids . '" class="myButton_play" onClick="play_mp3(\'play\',\'' . $ids . '\',\'' . $fileurl . '\',\'' . $volume . '\',\'' . $loops . '\');show_hide(\'play\',\'' . $ids . '\');" />';

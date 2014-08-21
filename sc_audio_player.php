@@ -2,9 +2,9 @@
 /*
   Plugin Name: Compact Audio Player
   Description: Plays a specified audio file (.mp3 or .ogg) using a simple and compact audio player. The audio player is compatible with all major browsers and devices (Android, iPhone).
-  Version: 1.9.2
+  Version: 1.9.3
   Author: Tips and Tricks HQ
-  Author URI: http://www.tipsandtricks-hq.com/
+  Author URI: https://www.tipsandtricks-hq.com/
   License: GPL2
  */
 
@@ -14,7 +14,7 @@
   - Add a new option in the settings to allow a mp3 file to be played on every page load (it plays in the background)
  */
 
-define('SC_AUDIO_PLUGIN_VERSION', '1.9.2');
+define('SC_AUDIO_PLUGIN_VERSION', '1.9.3');
 define('SC_AUDIO_BASE_URL', plugins_url('/', __FILE__));
 
 include_once ('shortcodes-functions.php');
@@ -33,7 +33,7 @@ function wp_sc_audio_init() {
 }
 
 function scap_footer_code() {
-    $debug_marker = "<!-- WP Audio player plugin v" . SC_AUDIO_PLUGIN_VERSION . " - http://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556/ -->";
+    $debug_marker = "<!-- WP Audio player plugin v" . SC_AUDIO_PLUGIN_VERSION . " - https://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556/ -->";
     echo "\n${debug_marker}\n";
     ?>
     <script type="text/javascript">
@@ -129,7 +129,7 @@ function scap_mp3_options() {
     echo '<div id="poststuff"><div id="post-body">';
     echo '<div id="icon-upload" class="icon32"><br></div><h2>SC Audio Player</h2>';
 
-    echo '<div style="background: #FFF6D5; border: 1px solid #D1B655; color: #3F2502; padding: 15px 10px">Visit the <a href="http://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556" target="_blank">Compact Audio Player</a> plugin page for detailed documentation and update.</div>';
+    echo '<div style="background: #FFF6D5; border: 1px solid #D1B655; color: #3F2502; padding: 15px 10px">Visit the <a href="https://www.tipsandtricks-hq.com/wordpress-audio-music-player-plugin-4556" target="_blank">Compact Audio Player</a> plugin page for detailed documentation and update.</div>';
     echo "<p>This is a simple all browser supported audio player. There is no extra settings. Read the documentation and add the shortcode with the MP3 file URL in a WordPress post or page to embed the audio player.</p>";
     echo "<h3>Shortcode Format</h3>";
     echo '<p><code>[sc_embed_player fileurl="URL OF THE MP3 FILE"]</code></p>';
@@ -140,7 +140,7 @@ function scap_mp3_options() {
         update_option('sc_audio_disable_simultaneous_play', isset($_POST["sc_audio_disable_simultaneous_play"]) ? '1' : '');
     }
     ?>
-    <form method="post" action="<?php echo $_SERVER["REQUEST_URI"]; ?>">
+    <form method="post" action="">
 
         <div class="postbox">
             <h3><label for="title">Audio Player Settings</label></h3>
