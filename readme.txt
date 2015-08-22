@@ -3,7 +3,7 @@ Contributors: Tips and Tricks HQ
 Donate link: https://www.tipsandtricks-hq.com/development-center
 Tags: audio, audio player, embed, media, media player, mp3, mp3 player, music, music player, player, podcast, sound, ogg, wav,
 Requires at least: 3.0
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: 1.9.3
 License: GPLv2 or later
 
